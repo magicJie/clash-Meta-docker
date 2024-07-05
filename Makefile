@@ -22,7 +22,7 @@ build:
 	$(DOCKER) build -t $(IMAGE_FULL_NAME) . \
 	--build-arg TARGETOS=$(TARGETOS) --build-arg TARGETARCH=$(TARGETARCH) \
 	--build-arg TARGETVARIANT=$(TARGETVARIANT) --build-arg MIHOMO_VERSION=$(MIHOMO_VERSION) \
-	--build-arg https_proxy=$(https_proxy)
+	--build-arg http_proxy=$(http_proxy) --build-arg https_proxy=$(https_proxy)
 
 # 推送Docker镜像
 push: build

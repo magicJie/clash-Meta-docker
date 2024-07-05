@@ -10,13 +10,14 @@ ENV SUBSCRIBE_URL=""
 EXPOSE 7890 9090
 
 RUN apk add --update --no-cache ca-certificates \
+    && apk add --no-cache curl \
     && rm -rf /var/cache/apk/*
 
 RUN if [ "${TARGETARCH}" = "amd64" ]; \
-then wget -qO mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-${TARGETOS}-amd64-compatible-${MIHOMO_VERSION}.gz \
+then curl -Lo mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-${TARGETOS}-amd64-compatible-${MIHOMO_VERSION}.gz \
     && gzip -d mihomo.gz && chmod +x mihomo \
     && mv mihomo /usr/local/bin/mihomo; \
-else wget -qO mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-${TARGETOS}-${TARGETARCH}${TARGETVARIANT}-${MIHOMO_VERSION}.gz \
+else curl -Lo mihomo.gz https://github.com/MetaCubeX/mihomo/releases/download/${MIHOMO_VERSION}/mihomo-${TARGETOS}-${TARGETARCH}${TARGETVARIANT}-${MIHOMO_VERSION}.gz \
     && gzip -d mihomo.gz && chmod +x mihomo \
     && mv mihomo /usr/local/bin/mihomo; \
 fi

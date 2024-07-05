@@ -2,7 +2,7 @@ version: '3'
 services:
   clash:
     container_name: clash-meta
-    image: ${REGISTRY}/${REPO}/mihomo:${META_TAG}  # 最新版用 metacubex/mihomo:Alpha
+    image: ${REGISTRY}/${ORG}/mihomo:${META_TAG}  # 最新版用 metacubex/mihomo:Alpha
     restart: always
     pid: host
     ipc: host
