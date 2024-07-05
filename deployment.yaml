@@ -1,0 +1,18 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: clash-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: clash
+  template:
+    metadata:
+      labels:
+        app: clash
+    spec:
+      containers:
+      - name: clash-meta
+        image: swr.lan.aiminjie.com/metacubex/mihomo:v1.18.6
+        
